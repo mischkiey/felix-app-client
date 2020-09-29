@@ -4,8 +4,6 @@ import AlertsContext from '../../contexts/AlertsContext';
 import { updateAlert } from '../../services/alertsService';
 import moment from 'moment-timezone';
 
-import './Alerts.css';
-
 const Alerts = () => {
   const alertsContext = useContext(AlertsContext);
   

@@ -1,11 +1,8 @@
 import React from 'react';
 import TransactionForm from '../TransactionForm/TransactionForm'
 
-import { Button } from '../Misc/Misc';
 import TransactionsService from '../../services/transactions-service';
 import moment from 'moment';
-
-import './transaction.css'
 
 export default class Transaction extends React.Component {  
 

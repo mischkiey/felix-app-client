@@ -54,13 +54,19 @@ class RegistrationForm extends React.Component {
     const {error} = this.state;
 
     return (
-      <div>
         <form 
-          className='RegistrationForm'
+          className=''
           onSubmit={this.handleUserRegistration}
         >
-          <div role='alert'>
-            {error && <p className='error-alert'>{error}</p>}
+          <div 
+            role='alert'>
+            {error && 
+              <p
+                className='error'
+              >
+                {error}
+              </p>
+            }
           </div>
 
           <input
@@ -107,19 +113,20 @@ class RegistrationForm extends React.Component {
             type='password'
             required
           />
-      
+
           <button
-            className='primaryBtn btn'
+            className=''
             type='submit'
           >
-            Submit
+            SIGNUP
           </button>
+          <p>
+            Already have an account?
+          </p>
+          <a href='/login'>
+            Login
+          </a>
         </form>
-
-        <a href='/login'>
-          Already have an account? Login
-        </a>
-      </div>
     )
   }   
 }

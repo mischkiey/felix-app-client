@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import TransactionsContext from '../../contexts/TransactionsContext';
 import TransactionsService from '../../services/transactions-service';
-import './Transactions.css';
-
-import './Transactions.css'
-import '../../styles/ButtonStyles.css'
-import '../../styles/index.css'
 
 class Transactions extends Component {
   static contextType = TransactionsContext;

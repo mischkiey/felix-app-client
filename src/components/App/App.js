@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 
 // Util Components
 import Header from '../Header/Header';
@@ -19,22 +19,16 @@ import AlertsRoute from '../../routes/AlertsRoute';
 // Authentication & Registration Components
 import LoginRoute from '../../routes/LoginRoute';
 import RegistrationRoute from '../../routes/RegistrationRoute';
-import LandingRoute from '../../routes/LandingRoute';
+// import LandingRoute from '../../routes/LandingRoute';
 
-import '../../styles/index.css';
-import '../../styles/ButtonStyles.css';
-import '../../styles/FormStyles.css';
-import '../../styles/LinkStyles.css';
-import '../Header/Header.css';
-import '../../styles/OverviewStyles.css';
-import './App.css'
+import './App.css';
 
 const App = () => {
 
   return (
     <>
       <Header />
-      <div className='App'>
+      <main>
         <Switch>
           <PrivateRoute
             exact
@@ -94,13 +88,13 @@ const App = () => {
             comp={RegistrationRoute}
           />
 
-          <Route
+          {/* <Route
             path={'/about'}
             component={LandingRoute}
-          />
+          /> */}
 
         </Switch>
-      </div>
+      </main>
     </>
   );
 };

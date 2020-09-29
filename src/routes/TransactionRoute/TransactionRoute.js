@@ -4,7 +4,6 @@ import TransactionsService from '../../services/transactions-service';
 import Transaction from '../../components/Transaction/Transaction';
 
 import './TransactionRoute.css';
-import { date } from 'yup';
 
 export default class TransactionRoute extends React.Component{
   static contextType = TransactionsContext;

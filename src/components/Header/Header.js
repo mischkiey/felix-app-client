@@ -8,10 +8,8 @@ import './Header.css';
 const Header = () => {
   const { isUserLoggedIn, handleUserLog } = useContext(UserContext);
 
-  // Set user to null or redundant?
-
   // Render logged in state
-  // When isUserLoggedIn in UserContext is true
+  // When isUserLoggedIn in UserContext is false
   const renderLoggedInNav = () => {
     return (
       <nav className='headerNav'>
@@ -32,7 +30,7 @@ const Header = () => {
           onClick={() => {
             handleUserLog();
           }}
-          to='/' // Goes to register page from dash/Temp
+          to='/'
         >
           Log Out
         </Link>
@@ -42,37 +40,47 @@ const Header = () => {
 
   // Render logged out state
   // When isUserLoggedIn in UserContext is false
-  const renderLoggedOutNav = () => {
-    return (
-      <nav className='headerNav'>
-        <Link
-          to='/about'
-        >
-          About
-        </Link>
-        <Link
-          to='/login'
-        >
-          Log In
-        </Link>
-        <Link
-          to='/register'
-        >
-          Signup
-        </Link>
-      </nav>
-    )
-  }
+  // const renderLoggedOutNav = () => {
+  //   return (
+  //     <nav className='headerNav'>
+  //       <Link
+  //         to='/about'
+  //       >
+  //         About
+  //       </Link>
+  //       <Link
+  //         to='/login'
+  //       >
+  //         Log In
+  //       </Link>
+  //       <Link
+  //         to='/register'
+  //       >
+  //         Signup
+  //       </Link>
+  //     </nav>
+  //   )
+  // }
 
   return (
     <>
-      <header className='headerMain'>
-        <h1 className='mainTitle'>felix</h1>
-        <h2 className='mainSubtitle'>Personal Finance Assistant</h2>
+      <header
+        className='header-group'
+      >
+        <h1
+          className=''
+        >
+          felix
+        </h1>
+        <h2
+          className=''
+        >
+          Personal Finance Assistant
+        </h2>
         {
           (isUserLoggedIn || TokenService.hasAuthToken())
             ? renderLoggedInNav()
-            : renderLoggedOutNav()
+            : ''
         }
       </header>
     </>

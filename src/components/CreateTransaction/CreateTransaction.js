@@ -3,7 +3,6 @@ import TransactionForm from '../TransactionForm/TransactionForm';
 import TransactionsService from '../../services/transactions-service';
 import TransactionsContext from '../../contexts/TransactionsContext';
 
-
 export default class CreateTransaction extends React.Component {
 	static contextType = TransactionsContext;
 

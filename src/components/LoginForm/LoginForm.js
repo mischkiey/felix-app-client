@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import UserContext from '../../contexts/UserContext';
 import AuthService from '../../services/auth-service';
-import '../../styles/FormStyles.css'
-import '../../styles/ButtonStyles.css'
-import './LoginForm.css'
 
 // Validation
 // Integrate with Formik as soon as logic has been implemented

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import TransactionsContext from '../../contexts/TransactionsContext';
 import TransactionsService from '../../services/transactions-service';
 
@@ -14,36 +15,39 @@ class Transactions extends Component {
   }
 
   renderTransactions(transactions) {
-    return transactions.map((trx, i) => {
-      return (
-        <li 
-          className='dataFlexRow'
-          key={i}
-        >
-          <span className='userData2'>
-            {trx.income_category || trx.expense_category}
-          </span>
-          <span
-            className=
-            {(trx.income_amount)
-            ? 'income userData2 middleColumn'
-            : 'expenses userData2 middleColumn'
-            }
-            >
-            {trx.income_amount || trx.expense_amount}
-          </span>
-      
-          <button
-            className='btn tertiaryBtn'
-            onClick={() =>
-              this.props.history.push(this.renderTransactionParams(trx))
-            }
+    const transactionsList = transactions
+      .map((trx, i) => {
+        return (
+          <li 
+            className=''
+            key={i}
           >
-            Details
-          </button>
-        </li>
-      );
+            <Link
+              className='list-item-group'
+              to={this.renderTransactionParams(trx)}
+            >
+              <span 
+                className='capitalize'
+              >
+                {trx.income_category || trx.expense_category}
+              </span>
+              <span
+                className=
+                {(trx.income_amount) ? 'income' : 'expenses'}
+                >
+                {trx.income_amount || trx.expense_amount}
+              </span>
+            </Link>
+          </li>
+        );
     });
+    return (
+      <ul
+        className='list-group'
+      >
+        {transactionsList}
+      </ul>
+    )
   }
 
   async componentDidMount() {
@@ -61,24 +65,39 @@ class Transactions extends Component {
     const { transactions = [] } = this.context;
 
     return (
-      <article className='AllTransactions'>
-        <h2 className='sectionHeaderALT'>
-          All Transactions
-        </h2>
-        <ul className='overviewSection'>
-          {
-            (transactions.length)
-              ? this.renderTransactions(transactions)
-              : ''
-          }
-        </ul>
+      <article
+        className='overview-group'
+      >
+        <div
+          className='overview-header-group'
+        >
+          <h2
+            className=''
+          >
+            Transactions
+          </h2>
+          <i 
+            className='material-icons'
+            onClick={() =>
+              this.props.history.push('/createtransaction')
+            }
+            type='click'
+          >
+            add_circle
+          </i>
+        </div>
+        {
+          (transactions.length)
+            ? this.renderTransactions(transactions)
+            : ''
+        }
         <button
-          className='btn tertiaryBtn'
+          className='center greybox-button'
           onClick={() =>
             this.props.history.push('/')}
             type='click'
         >
-          Back
+          BACK
         </button>
       </article>
     );

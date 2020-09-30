@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import GoalsContext from '../../contexts/GoalsContext';
 import GoalsService from '../../services/goals-service';
 import './Goals.css';
@@ -23,68 +24,75 @@ const Goals = (props) => {
   }, [setGoals]);
 
   const renderGoals = (goals) => {
-    return goals
+    const goalsList = goals
       .map((goal, i) => {
         if(!goal.completed) {
           return (
-            <ul
-              className='dataFlexRowALT'
+            <li
+              className=''
               key={i}
             >
-              <li className='dataFlexColALT'>
-                <div className='goalTitleHeader'>
-                  Name
-                </div> 
-                <div>{goal.name}</div>
-              </li>
-              <li className='dataFlexColALT'>
-                <div className='goalTitleHeader'>
-                  Current
-                </div> 
-                <div>{goal.current_amount}</div>
-              </li>
-              <li className='dataFlexColALT'>
-                <div className='goalTitleHeader'>
-                  Goal
-                </div>
-                <div>{goal.goal_amount}</div>
-              </li>
-              <li className='goalBtn'>
-                <button
-                  className='btn tertiaryBtn'
-                  onClick={() =>
-                    props.history.push(`/goal/${goal.id}`)
-                  }
+              <Link
+                className='list-item-group'
+                to={`/goal/${goal.id}`}
+              >
+                <span
+                  className='capitalize'
                 >
-                  Details
-                </button>
-              </li>
-            </ul>
+                  {goal.name}
+                </span>
+                <span>
+                  Saved ${goal.current_amount} of {goal.goal_amount}
+                </span>
+              </Link>
+            </li>
           );
         }
         return '';
       });
+
+      return (
+        <ul
+          className='list-group'
+        >
+          {goalsList}
+        </ul>
+      )
   }
 
   return (
-    <article className='AllGoals'>
-      <h2 className='sectionHeaderALT'>
-        Goals
-      </h2>
-      <ul className='overviewSectionALT'>
-        {
-          (goals.length)
-            ? renderGoals(goals)
-            : ''
-        }
-      </ul>
+    <article
+      className='overview-group'>
+      <div
+        className='overview-header-group'
+      >
+        <h2
+          className=''
+        >
+          Goals
+        </h2>
+        <i 
+          className='material-icons'
+          onClick={() =>
+            props.history.push('/goal/add/ ')
+          }
+          type='click'
+        >
+          add_circle
+        </i>
+      </div>
+      {
+        (goals.length)
+          ? renderGoals(goals)
+          : ''
+      }
       <button
-        className='btn tertiaryBtn'
+        className='center greybox-button'
         onClick={() =>
           props.history.push('/')}
           type='click'
       >
-        Back
+        BACK
       </button>
     </article>
   )

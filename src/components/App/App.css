@@ -66,10 +66,10 @@ body {
   border-radius: 2px;
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   list-style-type: none;
   margin: 5px 0;
-  padding: 7px 0;
+  padding: 7px 20px;
 }
 
 /* Position & Sizing */
@@ -118,6 +118,7 @@ body {
 
 a {
   color: #FFF;
+  text-decoration: none;
 }
 
 a:hover {
@@ -133,6 +134,10 @@ h2 {
 .main-overview-group > p.center {
   font-size: 24px;
   margin: 5px 0;
+}
+
+li {
+  list-style-type: none;
 }
 
 /* Global Properties/Elements */

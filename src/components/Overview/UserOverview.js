@@ -20,28 +20,28 @@ class UserOverview extends Component {
     const { user = {} } = this.context;
 
     return (
-      <article 
-        className='overviewSection'
+      <section 
+        className='main-overview-group'
       >
         <h2
-          className='sectionHeader'
-        >
-          Overview
+          className=''>
+          Balance:
         </h2>
-        <p className='sectionSubHeader'>
-          Balance
+        <p
+          className='center'
+        >
+          $ {user.balance}  
+        </p>      
+        <h2
+          className=''>
+          Allowance:
+        </h2>
+        <p
+          className='center'
+        >
+          $ {user.allowance}  
         </p>
-        <div className='userData'>
-          {user.balance}
-        </div>
-        
-        <p className='sectionSubHeader'>
-          Allowance
-        </p>
-        <div className='userData'>
-          {user.allowance}
-        </div>
-      </article>
+      </section>
     );
   }
 }

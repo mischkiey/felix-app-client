@@ -10,79 +10,90 @@ const Header = () => {
 
   // Render logged in state
   // When isUserLoggedIn in UserContext is false
-  const renderLoggedInNav = () => {
+  const renderLoggedInHeader = () => {
     return (
-      <nav className='headerNav'>
-        <Link
-          to='/about'
+      <header
+        className='header-group'
+      >
+        <h1
+          className='logged-in-h1'
         >
-          About
-        </Link>
-        <Link
-          to='/'
+          felix
+        </h1>
+        <nav
+          className='nav-group'
         >
-          Dashboard
-        </Link>
-        <Link to='/alerts'>
-          Alerts
-        </Link>
-        <Link
-          onClick={() => {
-            handleUserLog();
-          }}
-          to='/'
-        >
-          Log Out
-        </Link>
-      </nav>
+          <Link
+            to='/'
+          >
+            dashboard
+          </Link>
+          <Link to='/alerts'>
+            alerts
+          </Link>
+          <Link
+            to='/about'
+          >
+            about
+          </Link>
+          <Link
+            onClick={() => {
+              handleUserLog();
+            }}
+            to='/'
+          >
+            logout
+          </Link>
+        </nav>
+      </header>
     )
   }
 
   // Render logged out state
   // When isUserLoggedIn in UserContext is false
-  // const renderLoggedOutNav = () => {
-  //   return (
-  //     <nav className='headerNav'>
-  //       <Link
-  //         to='/about'
-  //       >
-  //         About
-  //       </Link>
-  //       <Link
-  //         to='/login'
-  //       >
-  //         Log In
-  //       </Link>
-  //       <Link
-  //         to='/register'
-  //       >
-  //         Signup
-  //       </Link>
-  //     </nav>
-  //   )
-  // }
-
-  return (
-    <>
+  const renderLoggedOutHeader = () => {
+    return (
       <header
-        className='header-group'
+        className='header-group header-padding-top'
       >
         <h1
-          className=''
+          className='logged-out-h1'
         >
           felix
         </h1>
         <h2
-          className=''
+          className='tagline'
         >
           Personal Finance Assistant
         </h2>
-        {
-          (isUserLoggedIn || TokenService.hasAuthToken())
-            ? renderLoggedInNav()
-            : ''
-        }
+        {/* <nav className='headerNav'>
+          <Link
+            to='/about'
+          >
+            About
+          </Link>
+          <Link
+            to='/login'
+          >
+            Log In
+          </Link>
+          <Link
+            to='/register'
+          >
+            Signup
+          </Link>
+        </nav> */}
       </header>
+    )
+  }
+
+  return (
+    <>
+      {
+        (isUserLoggedIn || TokenService.hasAuthToken())
+          ? renderLoggedInHeader()
+          : renderLoggedOutHeader()
+      }
     </>
   );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
-import TransactionsContext from '../../contexts/TransactionsContext';
-import TransactionsService from '../../services/transactions-service';
-import Transaction from '../../components/Transaction/Transaction';
+import TransactionsContext from '../contexts/TransactionsContext';
+import TransactionsService from '../services/transactions-service';
+import Transaction from '../components/Transaction/Transaction';
 
 import './TransactionRoute.css';
 

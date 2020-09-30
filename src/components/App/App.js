@@ -13,7 +13,7 @@ import GoalRoute from '../../routes/GoalRoute';
 import GoalFormRoute from '../../routes/GoalFormRoute';
 import CreateTransactionRoute from '../../routes/CreateTransactionRoute';
 import TransactionsRoute from '../../routes/TransactionsRoute';
-import TransactionRoute from '../../routes/TransactionRoute/TransactionRoute';
+import TransactionRoute from '../../routes/TransactionRoute';
 import AlertsRoute from '../../routes/AlertsRoute';
 
 // Authentication & Registration Components
@@ -26,7 +26,9 @@ import './App.css';
 const App = () => {
 
   return (
-    <>
+    <div
+      className='wrapper'
+    >
       <Header />
       <main>
         <Switch>
@@ -95,7 +97,7 @@ const App = () => {
 
         </Switch>
       </main>
-    </>
+    </div>
   );
 };
 

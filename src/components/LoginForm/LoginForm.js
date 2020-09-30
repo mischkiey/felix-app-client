@@ -50,18 +50,23 @@ class LoginForm extends Component {
 
     return (
         <form
-        className='formContainer'
+          className=''
           onSubmit={(e) => 
             this.handleUserLogin(e)}
         >
           <div role='alert'>
-            {error && <p className='errorMessage'>{error}</p>}
+            {error &&
+              <p
+                className='error'
+              >
+                {error}
+              </p>
+            }
           </div>
     
           <input
             aria-label='username'
             placeholder='username'
-            className='formInput'
             autoComplete='username'
             id='username'
             type='text'
@@ -70,18 +75,23 @@ class LoginForm extends Component {
           <input
             aria-label='password'
             placeholder='password'
-            className='formInput'
             autoComplete='current-password'
             id='password'
             type='password'
           />
     
           <button
-            className='primaryBtn btn'
+            className=''
             type='submit'
           >
-            Submit
+            LOGIN
           </button>
+          <p>
+            Don't have an account?
+          </p>
+          <a href='/register'>
+            Register
+          </a>
         </form>
     );
   }

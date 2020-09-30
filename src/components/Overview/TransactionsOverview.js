@@ -13,25 +13,23 @@ class TransactionsOverview extends Component {
       if(i < 3 && i < transactions.length) {
         transactionsList.push(
           <li 
-            className='userData2'
+            className='list-item-group'
             key={i}
           >
-            <div
-              className='dataFlexRow'
+            <span
+              className='capitalize'
             >
-              <span>
-                {trx.income_category || trx.expense_category}:
-              </span>
-              <span
-                className=
-                  {(trx.income_amount)
-                    ? 'income'
-                    : 'expenses'
-                  }
-              >
-                {trx.income_amount || trx.expense_amount}
-              </span>
-            </div>
+              {trx.income_category || trx.expense_category}:
+            </span>
+            <span
+              className=
+                {(trx.income_amount)
+                  ? 'income'
+                  : 'expenses'
+                }
+            >
+              {trx.income_amount || trx.expense_amount}
+            </span>
           </li>
         );
       }
@@ -39,9 +37,22 @@ class TransactionsOverview extends Component {
     }
 
     return (
-      <ul>
-        {transactionsList}
-      </ul>
+      <>
+        <ul
+          className='list-group'
+        >
+          {transactionsList}
+        </ul>
+        <button
+          className='greybox-button right'
+          onClick={() =>
+            this.props.history.push('/transactions')
+          }
+          type='click'
+        >
+        SEE ALL
+        </button>
+      </>
     );
   }
 
@@ -65,41 +76,29 @@ class TransactionsOverview extends Component {
 
     return (
       <article
-        className='overviewSection'
+        className='overview-group'
       >
-        <h2
-          className='sectionHeader'
+        <div
+          className='overview-header-group'
         >
-          Transactions Overview
-        </h2>
+          <h2
+            className=''
+          >
+            Transactions Overview
+          </h2>
+          <i 
+            className='material-icons'
+            onClick={() =>
+              this.props.history.push('/createtransaction')}
+            type='click'
+          >
+            add_circle
+          </i>
+        </div>
         {(transactions.length)
             ? this.renderTransactions(transactions)
             : ''
         }
-        <div
-          className='btnsFlexRow'
-        >
-          <button
-            className='btn tertiaryBtn'
-            onClick={() =>
-              this.props.history.push('/createtransaction')}
-              type='click'
-          >
-            +
-          </button>
-          {(transactions.length)
-              ? <button
-                  className='btn tertiaryBtn'
-                  onClick={() =>
-                    this.props.history.push('/transactions')
-                  }
-                  type='click'
-                >
-                  See All
-                </button>
-              : ''
-          }
-        </div>
       </article>
     );
   }

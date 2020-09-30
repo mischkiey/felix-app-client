@@ -10,35 +10,23 @@ const DashboardRoute = (props) => {
 
   return (
     <>
-    {alertsContext.dashboardAlerts.length > 0 &&  
-      <section className='AlertsOverview'>       
-        <section className='Alerts'>
-          <Alerts />
+      {alertsContext.dashboardAlerts.length > 0 &&  
+        <section className='AlertsOverview'>       
+          <section className='Alerts'>
+            <Alerts />
+          </section>
         </section>
-      </section>
-    }
+      }
   
-      <section
-        className='UserOverview'
-      >
-        <UserOverview />
-      </section>
+      <UserOverview />
 
-      <section
-        className='GoalsOverview'
-      >
-        <GoalsOverview
-          {...props}
-        />
-      </section>
-
-      <section
-        className='TransactionsOverview'
-      >
-        <TransactionsOverview
-          {...props}
-        />
-      </section>
+      <GoalsOverview
+        {...props}
+      />
+      
+      <TransactionsOverview
+        {...props}
+      />
     </>
   );
 }

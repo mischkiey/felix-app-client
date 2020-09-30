@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=MuseoModerno&family=Roboto:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 body {
   background-color: #090E21;
@@ -9,19 +10,91 @@ body {
 
 /* Containers/Groups */
 
+.wrapper {
+  width: 80%;
+  margin: auto;
+}
+
 .header-group {
   /* border: 1px solid #FFF; */
-  align-items: center;
+  /* Utilize align items stretch */
+  /* So .nav-group can fill the entire container */
+  /* align-items: center; */
   display: flex;
   flex-flow: column wrap;
-  padding-top: 120px;
+  text-align: center;
+}
+
+.nav-group {
+  /* border: 1px solid #FFF; */
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+.main-overview-group {
+  background-color: #FFF;
+  border: 1px solid #FFF;
+  border-radius: 4px;
+  color: #090E21;
+  display: flex;
+  flex-flow: column wrap;
+  margin-top: 30px;
+  padding: 5px 25px;
+}
+
+.overview-group {
+  /* border: 1px solid #FFF; */
+  margin-top: 30px;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.overview-header-group {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.list-group {
+  margin: 5px 0;
+  padding-inline-start: 0;
+}
+
+.list-item-group {
+  border: 1px solid #FFF;
+  border-radius: 2px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  list-style-type: none;
+  margin: 5px 0;
+  padding: 7px 0;
 }
 
 /* Position & Sizing */
 
+.header-padding-top {
+  padding-top: 120px;
+}
+
+.center {
+  align-self: center;
+  text-align: center;
+}
+
+.right {
+  align-self: flex-end;
+  text-align: right;
+}
+
 /* Typography */
 
-h1 {
+.capitalize {
+  text-transform: capitalize;
+}
+
+.logged-out-h1 {
   font-family: 'MuseoModerno', sans-serif;
   font-size: 96px;
   font-weight: 400;
@@ -29,7 +102,15 @@ h1 {
   margin-bottom: 0px;
 }
 
-h2 {
+.logged-in-h1 {
+  font-family: 'MuseoModerno', sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  /* line-height: 96px; */
+  margin: 20px 0px;
+}
+
+.tagline {
   color: #FF8A80;
   font-size: 20px;
   margin-top: 0px;
@@ -41,6 +122,17 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+h2 {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 5px 0;
+}
+
+.main-overview-group > p.center {
+  font-size: 24px;
+  margin: 5px 0;
 }
 
 /* Global Properties/Elements */
@@ -75,11 +167,19 @@ button {
   border-radius: 4px;
   color: #FFF;
   font-size: 12px;
-  margin: 10px 0;
+  margin: 5px 0;
   padding: 6px 12px;
+}
+
+.greybox-button {
+  background-color: #FFF;
+  border: 1px solid #FFF;
+  color: #090E21;
 }
 
 .error {
   color: #FFF;
   font-size: 12px;
 }
+
+/* Specific Properties/Targeted Elements */

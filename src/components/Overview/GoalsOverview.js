@@ -31,19 +31,17 @@ const GoalsOverview = (props) => {
       if(i < 3 && i < goals.length && !goal.completed) {
         goalsList.push((
           <li
-            className='userData2'
+            className='list-item-group'
             key={i}
           >
-            <div
-              className='dataFlexRow'
+            <span
+              className='capitalize'
             >
-              <span>
-                {goal.name}
-              </span>
-              <span>
-                {goal.current_amount} of {goal.goal_amount}
-              </span>
-            </div>
+              {goal.name}
+            </span>
+            <span>
+              Saved ${goal.current_amount} of ${goal.goal_amount}
+            </span>
           </li>
         ));
         i++;
@@ -51,49 +49,51 @@ const GoalsOverview = (props) => {
     }
 
     return (
-      <ul>
-        {goalsList}
-      </ul>
+      <>
+        <ul
+          className='list-group'
+        >
+          {goalsList}
+        </ul>
+        <button
+          className='greybox-button right'
+          onClick={() =>
+            props.history.push('/goals')
+          }
+          type='click'
+        >
+          SEE ALL
+        </button>
+      </>
     );
   }
 
   return (
     <article
-      className='overviewSection'
+      className='overview-group'
     >
-      <h2
-        className='sectionHeader'
+      <div
+        className='overview-header-group'
       >
-        Goals Overview
-      </h2>
+        <h2
+          className=''
+        >
+          Goals
+        </h2>
+        <i 
+          className='material-icons'
+          onClick={() =>
+            props.history.push('/goal/add/ ')
+          }
+          type='click'
+        >
+          add_circle
+        </i>
+      </div>
       {(goals.length)
           ? renderGoals(goals)
           : ''
       }
-      <div
-        className='btnsFlexRow'
-      >
-        <button
-            className='btn tertiaryBtn'
-            onClick={() =>
-              props.history.push('/goal/add/ ')}
-              type='click'
-          >
-            +
-        </button>
-        {(goals.length)
-          ? <button
-              className='btn tertiaryBtn'
-              onClick={() =>
-                props.history.push('/goals')
-              }
-              type='click'
-            >
-              See All
-            </button>
-          : ''
-        }
-      </div>
     </article>
   );
 }

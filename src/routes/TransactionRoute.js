@@ -1,10 +1,12 @@
 import React from 'react';
 import Transaction from '../components/Transaction/Transaction';
 
-const TransactionRoute = () => {
+const TransactionRoute = (props) => {
   return (
     <>
-      <Transaction />
+      <Transaction
+        {...props}
+      />
     </>
   );
 }

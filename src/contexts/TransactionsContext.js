@@ -51,9 +51,9 @@ export class TransactionsProvider extends Component {
           transaction: this.state.transaction,
           transactions: this.state.transactions,
 
-          setTransaction: this.state.transaction,
+          setTransaction: this.setTransaction,
           setTransactions: this.setTransactions,
-          
+
           clearTransactions: this.clearTransactions,
           clearError: this.clearError,
 

@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
 import TransactionsContext from '../../contexts/TransactionsContext';
-// import TransactionsService from '../../services/transactions-service';
-// import moment from 'moment';
+import TransactionsService from '../../services/transactions-service';
+import moment from 'moment';
 
 // import TransactionForm from '../TransactionForm/TransactionForm'
 
 export default class Transaction extends Component {
   static contextType = TransactionsContext;
 
-  componentDidMount() {
-    
+  async componentDidMount() {
+    try {
+      const { type, id } = this.props.match.params;
+      const transaction = await TransactionsService.getSingleTransaction(type, id);
+      console.log(transaction)
+      this.context.setTransaction(transaction);
+    } 
+    catch(error) {
+      console.log(error);
+    }
   }
 
   render() {
@@ -22,8 +30,7 @@ export default class Transaction extends Component {
         <h2
           className='capitalize center'
         >
-          Transaction Name
-          {/* {transaction.name} */}
+          {transaction.name}
         </h2>
         <ul
           className='list-group'
@@ -39,8 +46,7 @@ export default class Transaction extends Component {
             <span
               className=''
             >
-              $ XXX.XX
-              {/* {transaction.transaction_amount} */}
+              $ {transaction.amount}
             </span>
           </li>
           <li
@@ -54,8 +60,7 @@ export default class Transaction extends Component {
             <span
               className=''
             >
-              Income
-              {/* {transaction.type} */}
+              {transaction.category}
             </span>
           </li>
           <li
@@ -69,8 +74,7 @@ export default class Transaction extends Component {
             <span
               className=''
             >
-              Desc
-              {/* {goal.contribution_amount} */}
+              {transaction.description}
             </span>
           </li>
           <li
@@ -84,8 +88,7 @@ export default class Transaction extends Component {
             <span
               className=''
             >
-              MM / DD / YYYY
-              {/* {moment(goal.end_date).format('MM/DD/YYYY')} */}
+              {moment(transaction.date_created).format('MM/DD/YYYY')}
             </span>
           </li>
         </ul>

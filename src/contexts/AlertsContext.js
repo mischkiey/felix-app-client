@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getAlerts } from '../services/alertsService';
+import { getAlerts } from '../services/alerts-service';
 import moment from 'moment';
 import TokenService from '../services/token-service';
 

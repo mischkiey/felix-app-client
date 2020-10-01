@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 const TransactionsContext = React.createContext({
+  transaction: [],
   transactions: [],
   setTransactions : ()=>{},
   clearTransactions : ()=>{},
@@ -14,17 +15,18 @@ export default TransactionsContext;
 
 export class TransactionsProvider extends Component {
   state = {
+    transaction: {},
     transactions: [],
     error: null
   }
 
-  setTransactions = (transactions) => {
-    this.setState({transactions});
-  }
+  setTransaction = (transaction) => this.setState({transaction});
 
-  clearTransactions = () => {
-    this.setState({transactions: []});
-  }
+  setTransactions = (transactions) => this.setState({transactions});
+
+  clearTransaction = () => this.setState({transaction: {}})
+
+  clearTransactions = () => this.setState({transactions: []});
 
   clearError = () => this.setError({error : null});
 
@@ -40,16 +42,18 @@ export class TransactionsProvider extends Component {
   }
 
   // Pending stretch error handling
-  setError = (error) => {
-    this.setState({error});
-  }
+  setError = (error) => this.setState({error});
 
   render() {
     return (
       <TransactionsContext.Provider 
         value={{ 
+          transaction: this.state.transaction,
           transactions: this.state.transactions,
+
+          setTransaction: this.state.transaction,
           setTransactions: this.setTransactions,
+          
           clearTransactions: this.clearTransactions,
           clearError: this.clearError,
 

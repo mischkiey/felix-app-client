@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import AlertsContext from '../../contexts/AlertsContext';
-import { updateAlert } from '../../services/alertsService';
+import { updateAlert } from '../../services/alerts-service';
 import moment from 'moment-timezone';
 
 const Alerts = () => {

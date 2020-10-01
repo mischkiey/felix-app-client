@@ -37,93 +37,89 @@ const Goal = (props) => {
 
   return (
     <article
-      className='goalContainer'
+      className='overview-group'
     >
       <h2
-        className='goalName'
+        className='capitalize center'
       >
         {goal.name}
       </h2>
       <ul
-        className=''
+        className='list-group'
       >
         <li
-          className='goalAttribute'
+          className='list-item-group no-border'
         >
           <span
-            className='goalProperty'
+            className=''
           >
             Goal Amount:
           </span>
           <span
-            className='goalValue'
+            className=''
           >
             {goal.goal_amount}
           </span>
         </li>
         <li
-          className='goalAttribute'
+          className='list-item-group no-border'
         >
           <span
-            className='goalProperty'
+            className=''
           >
             Current Amount:
           </span>
           <span
-            className='goalValue'
+            className=''
           >
             {goal.current_amount}
           </span>
         </li>
         <li
-          className='goalAttribute'
+          className='list-item-group no-border'
         >
           <span
-            className='goalProperty'
+            className=''
           >
             Weekly Contribution Amount:
           </span>
           <span
-            className='goalValue'
+            className=''
           >
             {goal.contribution_amount}
           </span>
         </li>
         <li
-          className='goalAttribute'
+          className='list-item-group no-border'
         >
           <span
-            className='goalProperty'
+            className=''
           >
             Target End Date:
           </span>
           <span
-            className='goalValue'
+            className=''
           >
             {moment(goal.end_date).format('MM/DD/YYYY')}
           </span>
         </li>
       </ul>
-      <div
-        className='btnsFlexRow'
+      <button
+        className='center greybox-button'
+        onClick={() =>
+          props.history.push(`/goal/edit/${goal.id}`)
+        }
       >
-        <button
-          className='btn tertiaryBtn'
-          onClick={() =>
-            props.history.push(`/goal/edit/${goal.id}`)
-          }
-        >
-          Edit
-        </button>
-        <button
-          className='btn delete tertiaryBtn'
-          onClick={() =>
-            handleDeleteGoal()
-          }
-        >
-          Delete
-        </button>
-      </div>
+        EDIT
+      </button>
+      <button
+        className='center greybox-button'
+        onClick={() =>
+          handleDeleteGoal()
+        }
+      >
+        DELETE
+      </button>
     </article>
   )
 }

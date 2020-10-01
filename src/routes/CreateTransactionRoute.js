@@ -5,11 +5,11 @@ export default class CreateTransactionRoute extends React.Component {
 
   render() {
     return (
-      <>
-        <section>
-          <CreateTransaction history={this.props.history} />
-        </section>
-      </>
+      <section
+        className='overview-group'
+      >
+        <CreateTransaction history={this.props.history} />
+      </section>
     );
   };
 };

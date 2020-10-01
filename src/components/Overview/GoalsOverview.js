@@ -69,7 +69,7 @@ const GoalsOverview = (props) => {
   }
 
   return (
-    <article
+    <section
       className='overview-group'
     >
       <div
@@ -94,7 +94,7 @@ const GoalsOverview = (props) => {
           ? renderGoals(goals)
           : ''
       }
-    </article>
+    </section>
   );
 }
 

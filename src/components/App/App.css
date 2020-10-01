@@ -5,7 +5,7 @@ body {
   background-color: #090E21;
   color: #FFF;
   font-family: 'Roboto', sans-serif;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 /* Containers/Groups */
@@ -57,7 +57,7 @@ body {
 }
 
 .list-group {
-  margin: 5px 0;
+  margin: 0;
   padding-inline-start: 0;
 }
 
@@ -68,14 +68,14 @@ body {
   flex-flow: row wrap;
   justify-content: space-between;
   list-style-type: none;
-  margin: 10px 0;
+  margin-bottom: 10px;
   padding: 7px 20px;
 }
 
 /* Position & Sizing */
 
 .header-padding-top {
-  padding-top: 120px;
+  padding-top: 100px;
 }
 
 .center {
@@ -86,6 +86,10 @@ body {
 .right {
   align-self: flex-end;
   /* text-align: right; */
+}
+
+.stretch {
+  align-items: stretch;
 }
 
 /* Typography */
@@ -126,13 +130,13 @@ a:hover {
 }
 
 h2 {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 400;
-  margin: 5px 0;
+  margin: 10px 0;
 }
 
 .main-overview-group > p.center {
-  font-size: 24px;
+  font-size: 26px;
   margin: 5px 0;
 }
 
@@ -140,13 +144,14 @@ li {
   list-style-type: none;
 }
 
-/* Global Properties/Elements */
+/* Elements */
 
 form {
-  /* border: 1px solid #FFF; */
+  align-items: center;
+  border: 1px solid #FFF;
   display: flex;
   flex-flow: column wrap;
-  align-items: center;
+  /* margin-top: 10px; */
 }
 
 input {
@@ -154,9 +159,10 @@ input {
   border: 2px solid #303548;
   border-radius: 4px;
   color: #303548;
-  font-size: 12px;
+  /* font-size: 12px; */
   height: 24px;
-  margin: 5px 0;
+  /* margin: 5px 0; */
+  margin-bottom: 10px;
   text-align: center;
 }
 
@@ -166,17 +172,22 @@ input:focus {
   color: #FFF;
 }
 
+label {
+  margin: 10px 0;
+}
+
 button {
   background-color: #FF8A80;
   border: 1px solid #FF8A80;
   border-radius: 4px;
   color: #FFF;
-  font-size: 12px;
-  height: 24px;
-  margin: 5px 0;
+  /* font-size: 12px; */
+  height: 28px;
+  margin: 10px 0;
+  /* margin-bottom: 10px; */
   /* padding: 5px 15px; */
   text-align: center;
-  width: 68px
+  width: 84px
 }
 
 .greybox-button {
@@ -187,7 +198,11 @@ button {
 
 .error {
   color: #FFF;
-  font-size: 12px;
+  /* font-size: 12px; */
 }
 
-/* Specific Properties/Targeted Elements */
+@media all and (min-width: 800px) {
+  .wrapper {
+    width: 30%;
+  }
+}

@@ -71,14 +71,18 @@ export default class TransactionForm extends React.Component {
         ;
 
         return(
-          <div className='transaction_form_wrapper'>
+          <>
+            <h2
+              className='center'
+            >
+              Add/Edit Transaction Form
+            </h2>
             <form
               className='transaction_form' 
               onChange={e => this.handleChange(e)}
               onSubmit={e => this.props.handleSubmit(e, this.state)}
               
             >
-              <div className='transaction_notes'>
                 {
                   !this.props.editing 
                   && 
@@ -110,14 +114,12 @@ export default class TransactionForm extends React.Component {
                     <option value=''>select</option>
                     {this.renderOptions(optionForType)}
                 </select>
-                <textarea
+                <input
                   name='description'
                   maxLength='500'
                   placeholder='description'
                   defaultValue={description}
                   className='transaction_input description_input'/>
-              </div>
-              <div className='amount_wrapper'>
                 <input
                   name='amount'
                   type='number'
@@ -128,8 +130,6 @@ export default class TransactionForm extends React.Component {
                   defaultValue={amount}
                   step={0.01} precision={2}
                   required/>
-              </div>
-                <div className='button_wrapper'>
                   <button
                   type='submit' 
                   className='transaction_submit btn secondaryBtnALT'>
@@ -141,9 +141,8 @@ export default class TransactionForm extends React.Component {
                   className='transaction_form_cancel red_button btn secondaryBtnALT'>
                     Cancel
                   </button>
-                </div>
             </form>
-          </div>
+          </>
         );
     };
 };

@@ -75,7 +75,7 @@ class TransactionsOverview extends Component {
     const { transactions = [] } = this.context;
 
     return (
-      <article
+      <section
         className='overview-group'
       >
         <div
@@ -99,7 +99,7 @@ class TransactionsOverview extends Component {
             ? this.renderTransactions(transactions)
             : ''
         }
-      </article>
+      </section>
     );
   }
 }

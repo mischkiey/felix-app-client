@@ -128,91 +128,106 @@ const GoalForm = (props) => {
   }
 
   return (
-    <form
-      className='formContainer'
-      onSubmit={(e) =>
-        handleSubmitForm(e)
-      }
-    >
-      {error &&
-        <div
-          className='error'
-          role='alert'
+    <>
+      <h2
+        className='capitalize center'
+      >
+        {type} Goal
+      </h2>
+      <form
+        className='stretch'
+        onSubmit={(e) =>
+          handleSubmitForm(e)
+        }
+      >
+        {error &&
+          <div
+            className='error'
+            role='alert'
+          >
+            <p>
+              {error}
+            </p>
+          </div>
+        }
+        {contributionAmount > 0 &&
+          <div>
+            <p>
+              Your Weekly Contribution Amount: $ {contributionAmount}
+            </p>
+          </div>
+        }
+        <label
+          htmlFor='goal_name'
         >
-          {error}
-        </div>
-      }
-      {contributionAmount > 0 &&
-        <div>
-          Your Weekly Contribution Amount: {contributionAmount}
-        </div>
-      }
-      <label
-        htmlFor='goal_name'
-      >
-      </label>
-      <input
-        aria-label='goal_name'
-        className='formInput'
-        defaultValue={
-          (type === 'edit')
-          ? goal.name
-          : ''
-        }
-        id='goal_name'
-        onChange={() => {
-        }}
-        placeholder='goal name'
-        type='text'
-        required
-      />
+          Goal Name
+        </label>
+        <input
+          aria-label='goal_name'
+          className=''
+          defaultValue={
+            (type === 'edit')
+            ? goal.name
+            : ''
+          }
+          id='goal_name'
+          onChange={() => {
+          }}
+          placeholder='Input Goal Name'
+          type='text'
+          required
+        />
+        <label
+          htmlFor='goal_amount'
+        >
+          Goal Amount
+        </label>
+        <input
+          aria-label='goal amount'
+          className=''
+          defaultValue={
+            (type === 'edit')
+            ? goal.goal_amount
+            : ''
+          }
+          id='goal_amount'
+          min='0'
+          onChange={(e) => {
+            handleChangeGoalAmount(e);
+          }}
+          placeholder='Input Goal Amount'
+          // step='0.1'
+          type='number'
+          required
+        />
 
-      <label
-        htmlFor='goal_amount'
-      >
-      </label>
-      <input
-        aria-label='goal amount'
-        className='formInput'
-        defaultValue={
-          (type === 'edit')
-          ? goal.goal_amount
-          : ''
-        }
-        id='goal_amount'
-        min='0'
-        onChange={(e) => {
-          handleChangeGoalAmount(e);
-        }}
-        placeholder='amount'
-        // step='0.1'
-        type='number'
-        required
-      />
-
-      <DatePicker
-        aria-label='goal target end date'
-        className='formInput'
-        selected={date}
-        onChange={handleChangeDate}
-        placeholder={date}
-      />
-      <div>
+        <label
+          htmlFor=''
+        >
+          Target Completion Date
+        </label>
+        <DatePicker
+          aria-label='goal target end date'
+          className='center'
+          selected={date}
+          onChange={handleChangeDate}
+          placeholder={date}
+        />
         <button
-          className='btn secondaryBtnALT'
+          className='center greybox-button'
         >
-          Submit
+          SUBMIT
         </button>
         <button
-          className='btn cancel secondaryBtnALT'
+          className='center greybox-button'
           onClick={() => {
             props.history.push('/')
           }}
         >
-          Cancel
+          CANCEL
         </button>
-      </div>
     </form>
+    </>
   );
 }
 

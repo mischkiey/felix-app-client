@@ -3,23 +3,9 @@ import TransactionsContext from '../contexts/TransactionsContext';
 import TransactionsService from '../services/transactions-service';
 import Transaction from '../components/Transaction/Transaction';
 
-import './TransactionRoute.css';
-
 export default class TransactionRoute extends React.Component{
   static contextType = TransactionsContext;
 
-  /**
-   * transaction : {
-   *    amount : [int],
-   *    description : [str],
-   *    id : [int],
-   *    name : [str],
-   *    category : [str],
-   *    date_created : [str],
-   *    
-   *    type : (this.props.match.params.type)
-   * }
-   */
   state = {
     transaction: {},
   }

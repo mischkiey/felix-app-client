@@ -92,16 +92,16 @@ As the user:
 <p>&nbsp;</p>
 
 10. **Add Goal Form Page**
-![Add Goals Form Page](/images/add-goal-form.png)
+![Add Goal Form Page](/images/add-goal-form.png)
 
 <p>&nbsp;</p>
 
 11. **Edit Goal Form Page**
-![Edit Goals Form Page](/images/edit-goal-form.png)
+![Edit Goal Form Page](/images/edit-goal-form.png)
 
 <p>&nbsp;</p>
 
-12. **Alerts Page**
+<!-- 12. **Alerts Page**
 ![Alerts Page](/images/alerts.png)
 
 <p>&nbsp;</p>
@@ -109,7 +109,7 @@ As the user:
 13. **Landing Page**
 ![Landing Page](/images/landing.png)
 
-<p>&nbsp;</p>
+<p>&nbsp;</p> -->
 
 ## Technology Used
 1. HTML, CSS, JavaScript

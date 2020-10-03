@@ -11,9 +11,9 @@ import DashboardRoute from '../../routes/DashboardRoute';
 import GoalsRoute from '../../routes/GoalsRoute';
 import GoalRoute from '../../routes/GoalRoute';
 import GoalFormRoute from '../../routes/GoalFormRoute';
-import CreateTransactionRoute from '../../routes/CreateTransactionRoute';
 import TransactionsRoute from '../../routes/TransactionsRoute';
 import TransactionRoute from '../../routes/TransactionRoute';
+import TransactionFormRoute from '../../routes/TransactionFormRoute';
 import AlertsRoute from '../../routes/AlertsRoute';
 
 // Authentication & Registration Components
@@ -66,18 +66,19 @@ const App = () => {
           />
 
           <PrivateRoute
-            path={'/createtransaction'}
-            comp={CreateTransactionRoute}
-          />
-
-          <PrivateRoute
             path={'/transactions'}
             comp={TransactionsRoute}
           />
 
           <PrivateRoute
+            exact
             path={'/transaction/:type/:id'}
             comp={TransactionRoute}
+          />
+
+          <PrivateRoute
+            path={'/transaction/form/:type/:id'}
+            comp={TransactionFormRoute}
           />
 
           <PublicOnlyRoute

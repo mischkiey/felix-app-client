@@ -47,56 +47,67 @@ As the user:
 ## Client Documentation/Screenshots
 
 1. **Login Page**
+
 ![Landing Page](/images/login.png)
 
 <p>&nbsp;</p>
 
 2. **Signup Page**
+
 ![Signup Page](/images/signup.png)
 
 <p>&nbsp;</p>
 
 3. **Dashboard Page** 
+
 ![Dashboard Page](/images/dashboard.png)
 
 <p>&nbsp;</p>
 
 4. **Transactions Page**
+
 ![Transactions Page](/images/transactions.png)
  
 <p>&nbsp;</p>
 
 5. **Transaction Page**
+
 ![Transaction Page](/images/transaction.png)
 
 <p>&nbsp;</p>
 
 6. **Add Transaction Form Page**
+
 ![Add Transaction Form Page](/images/add-transaction-form.png)
 
 <p>&nbsp;</p>
 
 7. **Edit Transaction Form Page**
+
 ![Edit Transaction Form Page](/images/edit-transaction-form.png)
 
 <p>&nbsp;</p>
 
 8. **Goals Page**
+
 ![Goals Page](/images/goals.png)
  
 <p>&nbsp;</p>
 
 9. **Goal Page**
+
 ![Goal Page](/images/goal.png)
 
 <p>&nbsp;</p>
 
 10. **Add Goal Form Page**
+
 ![Add Goal Form Page](/images/add-goal-form.png)
 
 <p>&nbsp;</p>
 
 11. **Edit Goal Form Page**
+
 ![Edit Goal Form Page](/images/edit-goal-form.png)
 
 <p>&nbsp;</p>

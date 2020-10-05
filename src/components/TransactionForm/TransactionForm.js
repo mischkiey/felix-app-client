@@ -3,15 +3,136 @@ import TransactionsContext from '../../contexts/TransactionsContext';
 import TransactionsService from '../../services/transactions-service';
 
 class TransactionForm extends Component {
-  async componentDidMount() {
+  static contextType = TransactionsContext;
 
+  state = {
+    error: null,
   }
 
+  async componentDidMount() {
+    const { type, id } = this.props.match.params;
+    if(type.includes('edit')) {
+      console.log(type.slice(5, type.length))
+      try {
+        const transaction = await TransactionsService.getSingleTransaction(type.slice(5, type.length), id);
+        console.log(transaction);
+        this.context.setTransaction(transaction);
+      } catch(e) {
+        console.log(e);
+      }
+    }
+  }
+
+  // name, description, category, type, amount
+
   render () {
-    console.log(this.props);
+    const { transaction = {} } = this.context;
+    const { type, id } = this.props.match.params;
+
     return (
       <>
-        Transaction Form
+        <h2
+          className='capitalize center'
+        >
+          {type} Transaction
+        </h2>
+        <form
+          className='stretch'
+          onSubmit={(e) =>
+            console.log(e)
+            // handleSubmitForm(e)
+          }
+        >
+        {this.state.error &&
+          <div
+            className='error'
+            role='alert'
+          >
+            <p>
+              {this.state.error}
+            </p>
+          </div>
+        }
+        <label
+          htmlFor='transaction_name'
+        >
+          Transaction Name
+        </label>
+        <input
+          aria-label='transaction name'
+          className=''
+          defaultValue={
+            (type.includes('edit'))
+            ? transaction.name
+            : ''
+          }
+          id='transaction_name'
+          onChange={(e) => {
+            console.log(e);
+          }}
+          placeholder='Input Transaction Name'
+          type='text'
+          required
+        />
+        <label
+          htmlFor='transaction_amount'
+        >
+          Transaction Amount
+        </label>
+        <input
+          aria-label='transaction amount'
+          className=''
+          defaultValue={
+            (type.includes('edit'))
+            ? transaction.amount
+            : ''
+          }
+          id='transaction_amount'
+          min='0'
+          onChange={(e) =>
+            console.log(e)
+          }
+          placeholder='Input Transaction Amount'
+          // step='0.1'
+          type='number'
+          required
+        />
+        <label
+          htmlFor='transaction_description'
+        >
+          Transaction Description
+        </label>
+        <input
+          aria-label='transaction description'
+          className=''
+          defaultValue={
+            (type.includes('edit'))
+            ? transaction.description
+            : ''
+          }
+          id='transaction_description'
+          onChange={(e) => {
+            console.log(e);
+          }}
+          placeholder='Input Transaction Description'
+          type='text'
+          required
+        />
+        
+        <button
+          className='center greybox-button'
+        >
+          SUBMIT
+        </button>
+        <button
+          className='center greybox-button'
+          onClick={() =>
+            this.props.history.push('/')
+          }
+        >
+          CANCEL
+        </button>
+    </form>
       </>
     )
   }

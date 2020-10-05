@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import TransactionsContext from '../../contexts/TransactionsContext';
 import TransactionsService from '../../services/transactions-service';
 
-// Get form type from params
-// How to get transaction type and 
-
 class TransactionForm extends Component {
   async componentDidMount() {
 
@@ -14,6 +11,7 @@ class TransactionForm extends Component {
     console.log(this.props);
     return (
       <>
+        Transaction Form
       </>
     )
   }

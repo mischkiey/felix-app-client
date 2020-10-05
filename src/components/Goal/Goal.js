@@ -107,7 +107,7 @@ const Goal = (props) => {
       <button
         className='center greybox-button'
         onClick={() =>
-          props.history.push(`/goal/edit/${goal.id}`)
+          props.history.push(`/goal-form/edit/${goal.id}`)
         }
       >
         EDIT

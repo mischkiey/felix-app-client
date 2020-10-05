@@ -11,7 +11,7 @@ const GoalForm = (props) => {
 
   // Extract form type and goal id (if any) from params
   // Based on form type, set HTTP method
-  const { type = 'add', id = '' } = props.match.params;
+  const { type = 'add', id = '0' } = props.match.params;
   const method = (type === 'add') ? 'POST': 'PATCH';
 
   // Set initial date to current date

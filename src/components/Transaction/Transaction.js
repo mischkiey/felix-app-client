@@ -22,6 +22,7 @@ export default class Transaction extends Component {
 
   render() {
     const { transaction = {} } = this.context;
+    const { type, id } = this.props.match.params;
 
     return (
       <article
@@ -95,8 +96,8 @@ export default class Transaction extends Component {
       <button
         className='center greybox-button'
         onClick={() =>
-          console.log('Edit')
-          // props.history.push(`/goal/edit/${goal.id}`)
+          // console.log('Edit')
+          this.props.history.push(`/transaction-form/edit-${type}/${id}`)
         }
       >
         EDIT

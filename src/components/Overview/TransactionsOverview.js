@@ -89,7 +89,7 @@ class TransactionsOverview extends Component {
           <i 
             className='material-icons'
             onClick={() =>
-              this.props.history.push('/transaction/form/add/ ')}
+              this.props.history.push('/transaction-form/add/0')}
             type='click'
           >
             add_circle

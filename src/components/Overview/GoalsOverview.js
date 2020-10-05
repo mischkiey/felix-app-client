@@ -83,7 +83,7 @@ const GoalsOverview = (props) => {
         <i 
           className='material-icons'
           onClick={() =>
-            props.history.push('/goal/add/ ')
+            props.history.push('/goal-form/add/0')
           }
           type='click'
         >

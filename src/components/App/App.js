@@ -15,11 +15,11 @@ import TransactionsRoute from '../../routes/TransactionsRoute';
 import TransactionRoute from '../../routes/TransactionRoute';
 import TransactionFormRoute from '../../routes/TransactionFormRoute';
 import AlertsRoute from '../../routes/AlertsRoute';
+// import LandingRoute from '../../routes/LandingRoute';
 
 // Authentication & Registration Components
 import LoginRoute from '../../routes/LoginRoute';
 import RegistrationRoute from '../../routes/RegistrationRoute';
-// import LandingRoute from '../../routes/LandingRoute';
 
 import './App.css';
 
@@ -44,13 +44,13 @@ const App = () => {
             comp={GoalsRoute}
           />
 
-          <PrivateRoute
+          {/* <PrivateRoute
             path={'/goal/add'}
             comp={GoalFormRoute}
-          />
+          /> */}
 
           <PrivateRoute
-            path={'/goal/:type/:id'}
+            path={'/goal-form/:type/:id'}
             comp={GoalFormRoute}
           />
 
@@ -70,15 +70,18 @@ const App = () => {
             comp={TransactionsRoute}
           />
 
+          {/* Where type here refers to form type */}
+          <PrivateRoute
+            exact
+            path={'/transaction-form/:type/:id'}
+            comp={TransactionFormRoute}
+          />
+
+          {/* Where type here refers to transaction type */}
           <PrivateRoute
             exact
             path={'/transaction/:type/:id'}
             comp={TransactionRoute}
-          />
-
-          <PrivateRoute
-            path={'/transaction/form/:type/:id'}
-            comp={TransactionFormRoute}
           />
 
           <PublicOnlyRoute

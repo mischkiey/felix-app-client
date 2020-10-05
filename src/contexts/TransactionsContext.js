@@ -54,6 +54,7 @@ export class TransactionsProvider extends Component {
           setTransaction: this.setTransaction,
           setTransactions: this.setTransactions,
 
+          clearTransaction: this.clearTransaction,
           clearTransactions: this.clearTransactions,
           clearError: this.clearError,
 

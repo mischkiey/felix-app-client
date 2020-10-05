@@ -167,8 +167,8 @@ const GoalForm = (props) => {
           className=''
           defaultValue={
             (type === 'edit')
-            ? goal.name
-            : ''
+              ? goal.name
+              : ''
           }
           id='goal_name'
           onChange={() => {
@@ -187,8 +187,8 @@ const GoalForm = (props) => {
           className=''
           defaultValue={
             (type === 'edit')
-            ? goal.goal_amount
-            : ''
+              ? goal.goal_amount
+              : ''
           }
           id='goal_amount'
           min='0'

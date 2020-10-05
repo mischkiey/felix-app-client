@@ -6,29 +6,58 @@ class TransactionForm extends Component {
   static contextType = TransactionsContext;
 
   state = {
+    type: '',
     error: null,
   }
 
   async componentDidMount() {
     const { type, id } = this.props.match.params;
+
     if(type.includes('edit')) {
-      console.log(type.slice(5, type.length))
       try {
         const transaction = await TransactionsService.getSingleTransaction(type.slice(5, type.length), id);
-        console.log(transaction);
+        this.setState({type: type.slice(5, type.length)});
         this.context.setTransaction(transaction);
       } catch(e) {
         console.log(e);
       }
+    } else {
+      this.context.clearTransaction();
     }
   }
 
   // name, description, category, type, amount
 
+  handleChangeTransactionType(e) {
+    this.setState({type: e.target.value});
+  }
+
+  async handleSubmitForm (e) {
+    e.preventDefault();
+    this.setState({error: null});
+
+    console.log(e.target)
+    // if(this.state.type === 'income') {
+    //   console.log('e.target');
+    // }
+  }
+
+  renderTransactionCategoryOptions(categories) {
+    return categories
+      .map((category, idx) => (
+        <option
+          key={idx}
+          value={category}
+        >
+          {category}
+        </option>
+      ));
+  } 
+
   render () {
     const { transaction = {} } = this.context;
     const { type, id } = this.props.match.params;
-
+    
     return (
       <>
         <h2
@@ -39,8 +68,7 @@ class TransactionForm extends Component {
         <form
           className='stretch'
           onSubmit={(e) =>
-            console.log(e)
-            // handleSubmitForm(e)
+            this.handleSubmitForm(e)
           }
         >
         {this.state.error &&
@@ -63,8 +91,8 @@ class TransactionForm extends Component {
           className=''
           defaultValue={
             (type.includes('edit'))
-            ? transaction.name
-            : ''
+              ? transaction.name
+              : ''
           }
           id='transaction_name'
           onChange={(e) => {
@@ -75,6 +103,59 @@ class TransactionForm extends Component {
           required
         />
         <label
+          htmlFor='transaction_type'
+        >
+          Transaction Type
+        </label>
+        <select
+          aria-label='transaction type'
+          className='capitalize'
+          defaultValue={
+            (type.includes('income'))
+              ? 'income'
+              : 'expenses'
+          }
+          id='transaction_type'
+          name='transaction_type'
+          onChange={(e) => 
+            this.handleChangeTransactionType(e)
+          }
+          required
+        >
+          <option
+            value='income'
+          >
+            Income
+          </option>
+          <option
+            value='expenses'
+          >
+            Expenses
+          </option>
+        </select>
+        <label
+          htmlFor='transaction_category'
+        >
+          Transaction Category
+        </label>
+        <select
+          aria-label='transaction category'
+          className='capitalize'
+          defaultValue={
+            (type.includes('edit'))
+              ? transaction.category
+              : ''
+          }
+          id='transaction_type'
+          name='transaction_type'
+          required
+        >
+          {(this.state.type === 'income')
+            ? this.renderTransactionCategoryOptions(['paycheck', 'freelance', 'side_gig', 'other'])
+            : this.renderTransactionCategoryOptions(['bills', 'transportation', 'food', 'entertainment', 'other'])
+          }
+        </select>
+        <label
           htmlFor='transaction_amount'
         >
           Transaction Amount
@@ -83,9 +164,9 @@ class TransactionForm extends Component {
           aria-label='transaction amount'
           className=''
           defaultValue={
-            (type.includes('edit'))
-            ? transaction.amount
-            : ''
+            (type.includes('expenses'))
+              ? -(transaction.amount || 0)
+              : transaction.amount
           }
           id='transaction_amount'
           min='0'
@@ -93,7 +174,7 @@ class TransactionForm extends Component {
             console.log(e)
           }
           placeholder='Input Transaction Amount'
-          // step='0.1'
+          step='0.01'
           type='number'
           required
         />
@@ -107,8 +188,8 @@ class TransactionForm extends Component {
           className=''
           defaultValue={
             (type.includes('edit'))
-            ? transaction.description
-            : ''
+              ? transaction.description
+              : ''
           }
           id='transaction_description'
           onChange={(e) => {
@@ -139,149 +220,3 @@ class TransactionForm extends Component {
 }
 
 export default TransactionForm;
-
-// export default class TransactionForm extends React.Component {
-
-//   static defaultProps = {
-//     handleCancel: () => {},
-//     handleSubmit: () => {},
-//     editing: false,
-//     transaction: {
-//       amount: "",
-//       category: "",
-//       description: "",
-//       name: "",
-//       type: "",
-//     }
-//   }; 
-
-// 	state = {
-//     amount: "",
-//     category: "",
-//     description: "",
-//     name: "",
-//     type: "",
-//   };
-
-//   componentDidMount() {
-//     if (this.props.transaction) {
-//       this.setState({...this.props.transaction})
-//     }
-//   };
-
-//   handleChange = event => {
-//     event.preventDefault();
-//     const {name , value} = event.target;
-//     this.setState({
-//       ...this.state,
-//       [name]: event.target.type === 'number' ? parseFloat(value) : value
-//     });
-//   };
-
-//   renderOptions = arr =>{
-//     if(arr.length){
-//       return arr.map((item, i) => {
-//         return (
-//           <option
-//           key={i}
-//           name={item}
-//           value={item}
-//           >
-//           {item}
-//           </option>
-//         );
-//       });
-//     };
-//   };
-
-
-
-//     render(){
-//       //const {name, description, amount, category, type } = this.state 
-//       //Unused variables that were previously used to set name={name} of inputs. This was throwing a strange "uncontrolled input/requires defaultValues" error that we haven't fully figured out yet, so I'm leaving them here until then.
-//       const { type, name , category, description, amount} = this.state; 
-//        //For now this is all we need
-//        const optionForType = 
-//         type === 'income'
-//         ?
-//         ['paycheck', 'freelance', 'side_gig', 'other']
-//         :
-//         ['bills', 'transportation', 'food', 'entertainment', 'other']
-//         ;
-
-//         return(
-//           <>
-//             <h2
-//               className='center'
-//             >
-//               Add/Edit Transaction Form
-//             </h2>
-//             <form
-//               className='transaction_form' 
-//               onChange={e => this.handleChange(e)}
-//               onSubmit={e => this.props.handleSubmit(e, this.state)}
-              
-//             >
-//                 {
-//                   !this.props.editing 
-//                   && 
-//                   <>
-//                     <label htmlFor='transactionType'></label>
-//                     <select
-//                       onChange={e => this.handleChange(e)}
-//                       name='type'
-//                       className='transaction_selector transaction__form_type'
-//                       required>
-//                         <option value=''>select</option>
-//                       {this.renderOptions(['income','expenses'])}
-//                     </select> 
-//                   </>
-//                 }
-//                 <input 
-//                   name='name'
-//                   maxLength='50' //lol get dunked in 
-//                   placeholder='name'
-//                   defaultValue={name}
-//                   required
-//                   className='transaction_input name_input'/>
-//                 <select 
-//                   onChange={e => this.handleChange(e)}
-//                   name='category'
-//                   value={category}
-//                   className='transaction_selector transaction__form_category'
-//                   required>
-//                     <option value=''>select</option>
-//                     {this.renderOptions(optionForType)}
-//                 </select>
-//                 <input
-//                   name='description'
-//                   maxLength='500'
-//                   placeholder='description'
-//                   defaultValue={description}
-//                   className='transaction_input description_input'/>
-//                 <input
-//                   name='amount'
-//                   type='number'
-//                   min='-9999999999'
-//                   max='9999999999'
-//                   className='transaction_input amount_input'
-//                   placeholder='amount'
-//                   defaultValue={amount}
-//                   step={0.01} precision={2}
-//                   required/>
-//                   <button
-//                   type='submit' 
-//                   className='transaction_submit btn secondaryBtnALT'>
-//                     Submit
-//                   </button>
-
-//                   <button
-//                   onClick={this.props.handleCancel} 
-//                   className='transaction_form_cancel red_button btn secondaryBtnALT'>
-//                     Cancel
-//                   </button>
-//             </form>
-//           </>
-//         );
-//     };
-// };
